@@ -161,7 +161,7 @@ namespace Microsoft.PowerToys.Settings.UI.Library
             return JsonSerializer.Deserialize<T>(jsonSettingsString, options);
         }
 
-        // Save settings to a json file.
+        // Save settings to a json fil
         public void SaveSettings(string jsonSettings, string powertoy = DefaultModuleName, string fileName = DefaultFileName)
         {
             try

@@ -35,6 +35,9 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
         private GpoRuleConfigured _onlineAIModelsGpoRuleConfiguration;
         private bool _onlineAIModelsDisallowedByGPO;
         private bool _isEnabled;
+        private string _apiKey;
+        private string _apiUrl;
+        private string _modelName;
 
         private Func<string, int> SendConfigMSG { get; }
 
@@ -91,6 +94,11 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
                 // disable AI if it was enabled
                 DisableAI();
             }
+        }
+
+        public bool HasApiKey
+        {
+            get => !string.IsNullOrEmpty(_apiKey);
         }
 
         public bool IsEnabled
@@ -402,5 +410,6 @@ namespace Microsoft.PowerToys.Settings.UI.ViewModels
             {
             }
         }
+
     }
 }

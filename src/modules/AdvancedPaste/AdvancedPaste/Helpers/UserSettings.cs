@@ -29,7 +29,6 @@ namespace AdvancedPaste.Settings
         public UserSettings()
         {
             _settingsUtils = new SettingsUtils();
-
             ShowCustomPreview = true;
             SendPasteKeyCombination = true;
             CloseAfterLosingFocus = false;

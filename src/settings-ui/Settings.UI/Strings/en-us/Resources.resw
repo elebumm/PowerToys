@@ -722,6 +722,9 @@
   <data name="AdvancedPaste_Direct_Access_Hotkeys_GroupSettings.Header" xml:space="preserve">
     <value>Shortcuts</value>
   </data>
+  <data name="AdvancedPaste_Advanced_User_GroupSettings.Header" xml:space="preserve">
+    <value>Advanced</value>
+  </data>
   <data name="RemapKeysList.[using:Microsoft.UI.Xaml.Automation]AutomationProperties.Name" xml:space="preserve">
     <value>Current Key Remappings</value>
   </data>
@@ -1999,6 +2002,9 @@ Made with 💗 by Microsoft and the PowerToys community.</value>
   <data name="AdvancedPasteUI_Shortcut.Header" xml:space="preserve">
     <value>Open Advanced Paste window</value>
   </data>
+  <data name="AdvancedPasteUI_Advanced_User.Header" xml:space="preserve">
+    <value>Show Advanced Settings</value>
+  </data>
   <data name="PasteAsMarkdown_Shortcut.Header" xml:space="preserve">
     <value>Paste as Markdown directly</value>
   </data>
@@ -3174,6 +3180,12 @@ Activate by holding the key for the character you want to add an accent to, then
   <data name="AdvancedPaste_EnableAISettingsCardDescriptionLearnMore.Content" xml:space="preserve">
     <value>Learn more</value>
   </data>
+  <data name="AdvancedPaste_OpenAISelector.Content" xml:space="preserve">
+    <value>OpenAI</value>
+  </data>
+  <data name="AdvancedPaste_OllamaSelector.Content" xml:space="preserve">
+    <value>Ollama (Local)</value>
+  </data>
   <data name="Peek_ShortDescription" xml:space="preserve">
     <value>Quick and easy previewer</value>
   </data>
@@ -3772,6 +3784,12 @@ Activate by holding the key for the character you want to add an accent to, then
   <data name="AdvancedPaste_ShowCustomPreviewSettingsCard.Description" xml:space="preserve">
     <value>Preview the output of the custom format before pasting</value>
   </data>
+  <data name="AdvancedPaste_OllamaEndpointSettingsCard.Header" xml:space="preserve">
+    <value>Use Local Models</value>
+  </data>
+  <data name="AdvancedPaste_OllamaEndpointSettingsCard.Description" xml:space="preserve">
+    <value>Use local models with Ollama</value>
+  </data>
   <data name="Oobe_AdvancedPaste.Description" xml:space="preserve">
     <value>Advanced Paste is a tool to put your clipboard content into any format you need, focused towards developer workflows. It can paste as plain text, markdown, or json directly with the UX or with a direct keystroke invoke. These are fully locally executed. In addition, it has an AI powered option that is 100% opt-in and requires an Open AI key. Note: this will replace the formatted text in your clipboard with the selected format.</value>
   </data>
@@ -4195,5 +4213,14 @@ Activate by holding the key for the character you want to add an accent to, then
   <data name="AdvancedPaste_CloseAfterLosingFocus.Header" xml:space="preserve">
     <value>Automatically close the AdvancedPaste window after it loses focus</value>
     <comment>AdvancedPaste is a product name, do not loc</comment>
+  </data>
+  <data name="Api_Key.Header" xml:space="preserve">
+    <value>API Key</value>
+  </data>
+  <data name="Api_Url.Header" xml:space="preserve">
+    <value>API URL</value>
+  </data>
+  <data name="Model_Name.Header" xml:space="preserve">
+    <value>Model Name</value>
   </data>
 </root>

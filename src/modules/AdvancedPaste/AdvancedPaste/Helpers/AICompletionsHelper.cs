@@ -3,14 +3,19 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.ClientModel;
 using System.Globalization;
 using System.IO;
 using System.Net;
+using System.Net.Http;
 using Azure;
 using Azure.AI.OpenAI;
+using Azure.Core.Pipeline;
 using ManagedCommon;
 using Microsoft.PowerToys.Settings.UI.Library;
 using Microsoft.PowerToys.Telemetry;
+using OpenAI;
+using OpenAI.Chat;
 using Windows.Security.Credentials;
 
 namespace AdvancedPaste.Helpers
@@ -71,23 +76,16 @@ namespace AdvancedPaste.Helpers
             return string.Empty;
         }
 
-        private Response<Completions> GetAICompletion(string systemInstructions, string userMessage)
+        private ClientResult<ChatCompletion> GetAICompletion(string systemInstructions, string userMessage)
         {
-            OpenAIClient azureAIClient = new OpenAIClient(_openAIKey);
-
-            var response = azureAIClient.GetCompletions(
-                new CompletionsOptions()
+            var client = new OpenAIClient("ollama", new OpenAIClientOptions()
                 {
-                    DeploymentName = _modelName,
-                    Prompts =
-                    {
-                        systemInstructions + "\n\n" + userMessage,
-                    },
-                    Temperature = 0.01F,
-                    MaxTokens = 2000,
+                    Endpoint = new Uri("http://localhost:11434/v1/"),
                 });
 
-            if (response.Value.Choices[0].FinishReason == "length")
+            var response = client.GetChatClient("phi3").CompleteChat(systemInstructions + "\n\n" + userMessage);
+
+            if (response.Value.FinishReason.ToString() == "length")
             {
                 Console.WriteLine("Cut off due to length constraints");
             }
@@ -111,15 +109,15 @@ Output:
 ";
 
             string aiResponse = null;
-            Response<Completions> rawAIResponse = null;
+            ClientResult<ChatCompletion> rawAIResponse = null;
             int apiRequestStatus = (int)HttpStatusCode.OK;
             try
             {
                 rawAIResponse = this.GetAICompletion(systemInstructions, userMessage);
-                aiResponse = rawAIResponse.Value.Choices[0].Text;
+                aiResponse = rawAIResponse.Value.ToString();
 
-                int promptTokens = rawAIResponse.Value.Usage.PromptTokens;
-                int completionTokens = rawAIResponse.Value.Usage.CompletionTokens;
+                int promptTokens = rawAIResponse.Value.Usage.InputTokens;
+                int completionTokens = rawAIResponse.Value.Usage.OutputTokens;
                 PowerToysTelemetry.Log.WriteEvent(new Telemetry.AdvancedPasteGenerateCustomFormatEvent(promptTokens, completionTokens, _modelName));
             }
             catch (Azure.RequestFailedException error)

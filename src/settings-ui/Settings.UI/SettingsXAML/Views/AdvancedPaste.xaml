@@ -73,6 +73,8 @@
                             IsEnabled="{x:Bind ViewModel.IsOpenAIEnabled, Mode=OneWay}">
                             <ToggleSwitch IsOn="{x:Bind ViewModel.ShowCustomPreview, Mode=TwoWay}" />
                         </tkcontrols:SettingsCard>
+
+
                         <InfoBar
                             x:Uid="GPO_SettingIsManaged"
                             IsClosable="False"
@@ -124,6 +126,35 @@
                                         MinWidth="{StaticResource SettingActionControlMinWidth}"
                                         AllowDisable="True"
                                         HotkeySettings="{x:Bind Path=ViewModel.PasteAsJsonShortcut, Mode=TwoWay}" />
+                                </tkcontrols:SettingsCard>
+                            </tkcontrols:SettingsExpander.Items>
+                        </tkcontrols:SettingsExpander>
+                        <InfoBar
+                            x:Uid="AdvancedPaste_ShortcutWarning"
+                            IsClosable="False"
+                            IsOpen="{x:Bind ViewModel.IsConflictingCopyShortcut, Mode=OneWay}"
+                            IsTabStop="{x:Bind ViewModel.IsConflictingCopyShortcut, Mode=OneWay}"
+                            Severity="Warning" />
+                    </controls:SettingsGroup>
+
+                    <controls:SettingsGroup x:Uid="AdvancedPaste_Advanced_User_GroupSettings">
+                        <tkcontrols:SettingsExpander
+                            x:Uid="AdvancedPasteUI_Advanced_User"
+                            HeaderIcon="{ui:FontIcon Glyph=&#xEA18;}"
+                            IsExpanded="False">
+                            <tkcontrols:SettingsExpander.Items>
+                                <tkcontrols:SettingsCard Visibility="Collapsed">
+                                    <!--  There's a bug that makes it so that the first shortcut control inside an expander doesn't work. We add this dummy one so the other entries aren't affected.  -->
+                                    <TextBox />
+                                </tkcontrols:SettingsCard>
+                                <tkcontrols:SettingsCard x:Uid="Api_Key">
+                                    <TextBox Value="{x:Bind ViewModel, Mode=OneWay}" />
+                                </tkcontrols:SettingsCard>
+                                <tkcontrols:SettingsCard x:Uid="Api_Url">
+                                    <TextBox />
+                                </tkcontrols:SettingsCard>
+                                <tkcontrols:SettingsCard x:Uid="Model_Name">
+                                    <TextBox />
                                 </tkcontrols:SettingsCard>
                             </tkcontrols:SettingsExpander.Items>
                         </tkcontrols:SettingsExpander>
